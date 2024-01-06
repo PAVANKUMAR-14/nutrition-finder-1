@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+{% load static %}
+{% load mathfilters %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
+    ">
+    <link rel="stylesheet"  href="{% static 'style.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon1.png' %}">
+    <title>Nutrition checker</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row-1 text-center">
+            <div class="offset-sm-4 col-sm-4 offset-sm-4">
+                <img src="{% static 'foodie.png' %}" alt="foodie" class="img-fluid">
+            </div>
+        </div>
+
+        <div  class='row-2 mt-5 '>
+            <div class="offset-md-2 col-md-8 offset-md-2 col-sm-12">
+                
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="text" name="search" placeholder="Enter the food name correctly" required class="form-control my-search-form">
+                        <button type="submit" class="btn btn-success my-search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </div>
+                </form>
+                {% if api %}
+                {% if api == "oohhh ! something went wrong, try again" %}
+                <div class="alert alert-danger text-center mt-1" role="alert">
+                    <strong>Oops something went wrong ! try again later</strong>
+                </div>
+                {% else %}
+                <div >
+                    <h3 style="font-weight: 450;
+                    font-size: 25px !important;
+                    text-align: center;
+                    padding:0;
+                    margin: 0;" class="mt-4">{{api.0.name | capfirst}} has total of <b style="font-size:30px ;" class="text-success">{{api.0.calories}} calories</b></h3>
+                </div>
+
+                {% if api.0.calories  > 200 and api.0.sugar_g > 25 %}
+                 <div class="alert alert-danger text-center mt-2" role="alert">
+                    <strong>OMG! This food contains  high calories and sugar content </strong>
+                 </div>
+                {% endif %}
+
+                {% if api.0.sodium_mg  > 650 %}
+                 <div class="alert alert-danger text-center mt-2 " role="alert">
+                    <strong>OMG! This food contains high sodium content</strong>
+                 </div>
+                {% endif %}
+                
+                {% if api.0.cholesterol_mg  > 100 %}
+                <div class="alert alert-danger text-center mt-2 " role="alert">
+                   <strong>OMG! This food contains high cholestrol </strong>
+                </div>
+                {% endif %}
+           </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container mt-3" style="background-color:#f6fbf4; ">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <div class="mt-4 mb-2">
+                    <h5 class="text-center">Nutritional values</h5>
+                </div>
+
+                <div class="nutri-table w-100 mt-3">
+                    <table class="table table-hover ">
+                        <thead>
+                            <tr>
+                                <th colspan="9" class="pb-3 bg-dark  text-light text-center  ">
+                                   Serving size per 100 Grams</th>
+                            </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <tr><td>Carbohydates</td>
+                            <td>{{api.0.carbohydrates_total_g}}</td></tr>
+                            <tr><td>Cholestrol</td>
+                            <td>{{api.0.cholesterol_mg}}</td></tr>
+                            <tr><td>Saturated Fat</td>
+                            <td>{{api.0.fat_saturated_g}}</td></tr>
+                            <tr><td>Total Fat</td><td>{{api.0.fat_total_g}}</td></tr>
+                            <tr><td>Fiber Content</td><td>{{api.0.fiber_g}}</td></tr>
+                            <tr><td>Potassium</td><td>{{api.0.potassium_mg}}</td></tr>
+                            <tr><td>Protein</td><td>{{api.0.protein_g}}</td></tr>
+                            <tr><td>Sodium</td>
+                            <td>{{api.0.sodium_mg}}</td></tr>
+                            <tr><td>Sugar</td>
+                            <td>{{api.0.sugar_g}}</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            
+
+            <div class="col-md-8 col-sm-12">
+                <div class="mt-4">
+                    <h2 class> Optimizing Fitness for Calorie Meltdown
+                    </h2>
+                    <div style="display: flex;" id="new">
+                        <img src="{% static 'runner.png'%}" class="fitness-img" alt="jogging">
+                        <p>You have to jog for <strong>{{api.0.calories | div:229 | mul:60  | floatformat:0}}</strong> Minutes</p>      
+                    </div>
+    
+                    <div style="display: flex;" id="new">
+                        <img src="{% static 'yoga-pose.png'%}" class="fitness-img" alt="yoga">
+                        <p>You have to yoga for <strong>{{api.0.calories | div:223 | mul:60  | floatformat:0}}</strong> Minutes</p>      
+                    </div>
+    
+                    <div style="display: flex;" id="new">
+                        <img src="{% static 'weightlifter.png'%}" class="fitness-img" alt="gym">
+                        <p>You have to workout for<strong> {{api.0.calories | div:483 | mul:60 | floatformat:0}}</strong> Minutes</p>      
+                    </div>
+    
+                    <div style="display: flex;" id="new">
+                        <img src="{% static 'walking-man.png'%}" class="fitness-img" alt="walking">
+                        <p>You have to walk for <strong>{{api.0.calories | div:294 | mul:60  | floatformat:0}} </strong> Minutes</p>      
+                    </div>
+                </div>
+        </div>           
+    </div> 
+
+    <div>
+        <h6 style='font-size: 23px; margin-right: 20px; letter-spacing: 2px;' ; class="text-center mt-5">Crafted and Designed by Pavan Kumar</h6>
+    </div>
+                {% endif %}
+                {% endif %}
+</body>
+</html>
