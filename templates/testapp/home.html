@@ -112,22 +112,22 @@
                     <h2 class> Optimizing Fitness for Calorie Meltdown
                     </h2>
                     <div style="display: flex;" id="new">
-                        <img src="{% static 'img/runner.png'%}" class="fitness-img" alt="jogging">
+                        <img src="{% static 'img/runner.png' %}" class="fitness-img" alt="jogging">
                         <p>You have to jog for <strong>{{api.0.calories | div:229 | mul:60  | floatformat:0}}</strong> Minutes</p>      
                     </div>
     
                     <div style="display: flex;" id="new">
-                        <img src="{% static 'img/yoga-pose.png'%}" class="fitness-img" alt="yoga">
+                        <img src="{% static 'img/yoga-pose.png' %}" class="fitness-img" alt="yoga">
                         <p>You have to yoga for <strong>{{api.0.calories | div:223 | mul:60  | floatformat:0}}</strong> Minutes</p>      
                     </div>
     
                     <div style="display: flex;" id="new">
-                        <img src="{% static 'img/weightlifter.png'%}" class="fitness-img" alt="gym">
+                        <img src="{% static 'img/weightlifter.png' %}" class="fitness-img" alt="gym">
                         <p>You have to workout for<strong> {{api.0.calories | div:483 | mul:60 | floatformat:0}}</strong> Minutes</p>      
                     </div>
     
                     <div style="display: flex;" id="new">
-                        <img src="{% static 'img/walking-man.png'%}" class="fitness-img" alt="walking">
+                        <img src="{% static 'img/walking-man.png' %}" class="fitness-img" alt="walking">
                         <p>You have to walk for <strong>{{api.0.calories | div:294 | mul:60  | floatformat:0}} </strong> Minutes</p>      
                     </div>
                 </div>
