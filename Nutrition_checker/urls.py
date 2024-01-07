@@ -7,7 +7,7 @@ Examples:
 Function views
     1. Add an import:  from my_app import views
     2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
+Class-based viewsgit
     1. Add an import:  from other_app.views import Home
     2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
 Including another URLconf
@@ -27,8 +27,4 @@ urlpatterns = [
 ]
 
 urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
-<<<<<<< HEAD
 urlpatterns += static(settings.STATIC_URL,document_root = settings.STATIC_ROOT)
-=======
-urlpatterns += static(settings._URL,STATIC_URL,document_root = settings.STATIC_ROOT)
->>>>>>> 656070319cbfed9b23684147fd077c614ed7b56b
