@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'testapp',
-    'mathfilters'
+    'mathfilters',
 
 ]
 
@@ -125,7 +125,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[BASE_DIR/'static']
-STIC_ROOT=[BASE_DIR/'staticfiles_build'/'static']
+STATIC_ROOT=[BASE_DIR/'staticfiles_build'/'static']
 
 MEDIA_URL="/img/"
 MEDIA_ROOT=[BASE_DIR/'static']
