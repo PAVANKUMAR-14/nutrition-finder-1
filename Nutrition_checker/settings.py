@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'Nutrition_checker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'F3Ad*eccAc*CA2Gg1d6b51aGGEEB3DA-',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '13267',
     }
 }
 
