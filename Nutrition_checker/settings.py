@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-pwml$3$fuxd2yq6jlpzj*=7n_0zl0j&6$iada0n^$%2y0522i#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -121,6 +121,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS=[BASE_DIR/'static']
+STIC_ROOT=[BASE_DIR/'staticfiles_build','static']
+
+MEDIA_URL="img/"
+MEDIA_ROOT=[BASE_DIR/'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
