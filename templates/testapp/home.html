@@ -42,7 +42,7 @@
                     font-size: 25px !important;
                     text-align: center;
                     padding:0;
-                    margin: 0;" class="mt-4">{{api.0.name | capfirst}} has total of <b style="font-size:30px ;" class="text-success">{{api.0.cholesterol_mg}}cholesterol</b></h3>
+                    margin: 0;" class="mt-4">{{api.0.name | capfirst}} has total of <b style="font-size:30px ;" class="text-success">{{api.0.sugar_g}} sugar content</b></h3>
                 </div>
 
                 {% if api.0.sugar_g > 25 %}
@@ -95,8 +95,7 @@
                             <tr><td>Total Fat</td><td>{{api.0.fat_total_g}}</td></tr>
                             <tr><td>Fiber Content</td><td>{{api.0.fiber_g}}</td></tr>
                             <tr><td>Potassium</td><td>{{api.0.potassium_mg}}</td></tr>
-<!--                             <tr><td>Protein</td><td>{{api.0.protein_g}}</td></tr>
-                            <tr><td>Sodium</td> -->
+                            <tr><td>Sodium</td>
                             <td>{{api.0.sodium_mg}}</td></tr>
                             <tr><td>Sugar</td>
                             <td>{{api.0.sugar_g}}</td></tr>
