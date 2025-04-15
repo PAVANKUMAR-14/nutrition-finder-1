@@ -42,7 +42,7 @@
                     font-size: 25px !important;
                     text-align: center;
                     padding:0;
-                    margin: 0;" class="mt-4">{{api.0.name | capfirst}} has total of <b style="font-size:30px ;" class="text-success">{{api.0.cholesterol_mg}} cholesterol</b></h3>
+                    margin: 0;" class="mt-4">{{api.0.name | capfirst}} has total of <b style="font-size:30px ;" class="text-success">{{api.0.cholesterol_mg}}cholesterol</b></h3>
                 </div>
 
                 {% if api.0.sugar_g > 25 %}
@@ -95,7 +95,8 @@
                             <tr><td>Total Fat</td><td>{{api.0.fat_total_g}}</td></tr>
                             <tr><td>Fiber Content</td><td>{{api.0.fiber_g}}</td></tr>
                             <tr><td>Potassium</td><td>{{api.0.potassium_mg}}</td></tr>
-                            <tr><td>Sodium</td>
+<!--                             <tr><td>Protein</td><td>{{api.0.protein_g}}</td></tr>
+                            <tr><td>Sodium</td> -->
                             <td>{{api.0.sodium_mg}}</td></tr>
                             <tr><td>Sugar</td>
                             <td>{{api.0.sugar_g}}</td></tr>
@@ -104,60 +105,31 @@
                 </div>
             </div>
 
+            
+
             <div class="col-md-8 col-sm-12">
                 <div class="mt-4">
-                    <h2 class> Optimizing Fitness Based on Nutrition Content</h2>
-                    <!-- Estimated Total Calories -->
-                        {% with estimated_cal=api.0.protein_g|mul:4|add:api.0.carbohydrates_total_g|mul:4|add:api.0.fat_total_g|mul:9 %}
-                        <!-- Jogging (time based on calories burned per minute) -->
-                        <div style="display: flex;" id="new">
-                            <img src="{% static 'img/runner.png' %}" class="fitness-img" alt="jogging">
-                            <p>Jog for <strong>{{ estimated_cal|div:229|mul:60|floatformat:0 }}</strong> mins</p>
-                        </div>
-                        
-                        <!-- Yoga -->
-                        <div style="display: flex;" id="new">
-                            <img src="{% static 'img/yoga-pose.png' %}" class="fitness-img" alt="yoga">
-                            <p>Do yoga for <strong>{{ estimated_cal|div:223|mul:60|floatformat:0 }}</strong> mins</p>
-                        </div>
-                        
-                        <!-- Workout -->
-                        <div style="display: flex;" id="new">
-                            <img src="{% static 'img/weightlifter.png' %}" class="fitness-img" alt="gym">
-                            <p>Workout for <strong>{{ estimated_cal|div:483|mul:60|floatformat:0 }}</strong> mins</p>
-                        </div>
-                        
-                        <!-- Walking -->
-                        <div style="display: flex;" id="new">
-                            <img src="{% static 'img/walking-man.png' %}" class="fitness-img" alt="walking">
-                            <p>Walk for <strong>{{ estimated_cal|div:294|mul:60|floatformat:0 }}</strong> mins</p>
-                        </div>
-                        {% endwith %}
-                        <!-- Jogging (time based on calories burned per minute) -->
-                        <div style="display: flex;" id="new">
-                            <img src="{% static 'img/runner.png' %}" class="fitness-img" alt="jogging">
-                            <p>Jog for <strong>{{ estimated_cal|div:229|mul:60|floatformat:0 }}</strong> mins</p>
-                        </div>
-                        
-                        <!-- Yoga -->
-                        <div style="display: flex;" id="new">
-                            <img src="{% static 'img/yoga-pose.png' %}" class="fitness-img" alt="yoga">
-                            <p>Do yoga for <strong>{{ estimated_cal|div:223|mul:60|floatformat:0 }}</strong> mins</p>
-                        </div>
-                        
-                        <!-- Workout -->
-                        <div style="display: flex;" id="new">
-                            <img src="{% static 'img/weightlifter.png' %}" class="fitness-img" alt="gym">
-                            <p>Workout for <strong>{{ estimated_cal|div:483|mul:60|floatformat:0 }}</strong> mins</p>
-                        </div>
-                        
-                        <!-- Walking -->
-                        <div style="display: flex;" id="new">
-                            <img src="{% static 'img/walking-man.png' %}" class="fitness-img" alt="walking">
-                            <p>Walk for <strong>{{ estimated_cal|div:294|mul:60|floatformat:0 }}</strong> mins</p>
-                        </div>
-                        {% endwith %}
-
+                    <h2 class> Optimizing Fitness for Calorie Meltdown
+                    </h2>
+                    <div style="display: flex;" id="new">
+                        <img src="{% static 'img/runner.png' %}" class="fitness-img" alt="jogging">
+                        <p>You have to jog for <strong>{{api.0.calories | div:229 | mul:60  | floatformat:0}}</strong> Minutes</p>      
+                    </div>
+    
+                    <div style="display: flex;" id="new">
+                        <img src="{% static 'img/yoga-pose.png' %}" class="fitness-img" alt="yoga">
+                        <p>You have to yoga for <strong>{{api.0.calories | div:223 | mul:60  | floatformat:0}}</strong> Minutes</p>      
+                    </div>
+    
+                    <div style="display: flex;" id="new">
+                        <img src="{% static 'img/weightlifter.png' %}" class="fitness-img" alt="gym">
+                        <p>You have to workout for<strong> {{api.0.calories | div:483 | mul:60 | floatformat:0}}</strong> Minutes</p>      
+                    </div>
+    
+                    <div style="display: flex;" id="new">
+                        <img src="{% static 'img/walking-man.png' %}" class="fitness-img" alt="walking">
+                        <p>You have to walk for <strong>{{api.0.calories | div:294 | mul:60  | floatformat:0}} </strong> Minutes</p>      
+                    </div>
                 </div>
         </div>           
     </div> 
