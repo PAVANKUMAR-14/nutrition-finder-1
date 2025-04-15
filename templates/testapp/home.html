@@ -109,27 +109,37 @@
 
             <div class="col-md-8 col-sm-12">
                 <div class="mt-4">
-                    <h2 class> Optimizing Fitness for Calorie Meltdown
-                    </h2>
+                    <h2 class> Optimizing Fitness for Calorie Meltdown</h2>
+                    
+                    {% with estimated_cholesterol=api.0.cholesterol_mg|mul:2 %}
+                    {% with estimated_sodium=api.0.sodium_mg|div:100 %}
+                    {% with estimated_sugar=api.0.sugar_g|mul:10 %}
+                    {% with estimated_fat=api.0.fat_total_g|mul:20 %}
+                    
                     <div style="display: flex;" id="new">
                         <img src="{% static 'img/runner.png' %}" class="fitness-img" alt="jogging">
-                        <p>You have to jog for <strong>{{api.0.calories | div:229 | mul:60  | floatformat:0}}</strong> Minutes</p>      
+                        <p>Jog for <strong>{{ estimated_cholesterol|div:229|mul:60|floatformat:0 }}</strong> mins (based on cholesterol)</p>                    
                     </div>
     
                     <div style="display: flex;" id="new">
                         <img src="{% static 'img/yoga-pose.png' %}" class="fitness-img" alt="yoga">
-                        <p>You have to yoga for <strong>{{api.0.calories | div:223 | mul:60  | floatformat:0}}</strong> Minutes</p>      
+                        <p>Do yoga for <strong>{{ estimated_sodium|div:223|mul:60|floatformat:0 }}</strong> mins (based on sodium)</p>
+      
                     </div>
     
                     <div style="display: flex;" id="new">
                         <img src="{% static 'img/weightlifter.png' %}" class="fitness-img" alt="gym">
-                        <p>You have to workout for<strong> {{api.0.calories | div:483 | mul:60 | floatformat:0}}</strong> Minutes</p>      
+                        <p>Workout for <strong>{{ estimated_sugar|div:483|mul:60|floatformat:0 }}</strong> mins (based on sugar)</p>      
                     </div>
     
                     <div style="display: flex;" id="new">
                         <img src="{% static 'img/walking-man.png' %}" class="fitness-img" alt="walking">
-                        <p>You have to walk for <strong>{{api.0.calories | div:294 | mul:60  | floatformat:0}} </strong> Minutes</p>      
+                        <p>Walk for <strong>{{ estimated_fat|div:294|mul:60|floatformat:0 }}</strong> mins (based on fat)</p>      
                     </div>
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
+                    {% endwith %}
                 </div>
         </div>           
     </div> 
